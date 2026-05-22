@@ -26,12 +26,12 @@ export default function Navbar() {
       <a href="#accueil" className="flex items-center gap-2.5 group">
         <Image
           src="/logo.svg"
-          alt="Mue"
+          alt="Mue agency"
           width={36}
           height={36}
           className="transition-transform group-hover:rotate-12"
         />
-        <span className="font-display font-bold text-lg tracking-tight">Mue</span>
+        <span className="font-display font-bold text-lg tracking-tight">Mue agency</span>
       </a>
 
       <nav className="hidden md:flex items-center gap-1">

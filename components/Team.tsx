@@ -8,6 +8,10 @@ const team = [
   { name: "Membre 2", role: "Design & Produit", initials: "M2", linkedin: "#" },
   { name: "Membre 3", role: "Tech & Développement", initials: "M3", linkedin: "#" },
   { name: "Membre 4", role: "Terrain & Relations", initials: "M4", linkedin: "#" },
+  { name: "Membre 5", role: "Rôle 5", initials: "M5", linkedin: "#" },
+  { name: "Membre 6", role: "Rôle 6", initials: "M6", linkedin: "#" },
+  { name: "Membre 7", role: "Rôle 7", initials: "M7", linkedin: "#" },
+  { name: "Membre 8", role: "Rôle 8", initials: "M8", linkedin: "#" },
 ];
 
 export default function Team() {
@@ -26,11 +30,11 @@ export default function Team() {
             L&apos;équipe.
           </h2>
           <p className="mt-6 text-lg text-foreground/70 max-w-xl">
-            Quatre profils complémentaires, une même obsession : transmettre.
+            Huit profils complémentaires, une même obsession : transmettre.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {team.map((m, i) => (
             <TeamCard key={m.name} index={i} {...m} />
           ))}

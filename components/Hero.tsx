@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Blobs from "./Blobs";
 
-const title = "Agence Mue".split("");
+const title = "Mue Agency".split("");
 
 export default function Hero() {
   return (
