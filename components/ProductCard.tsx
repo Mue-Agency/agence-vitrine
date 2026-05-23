@@ -16,20 +16,45 @@ export default function ProductCard({ index, name, description, badge }: Props) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: index * 0.1 }}
-      whileHover={{ y: -6 }}
-      className="glass rounded-3xl p-8 md:p-10 flex flex-col gap-6 hover:bg-white/10 hover:glow-lime transition-all min-h-[320px]"
+      className="group relative p-10 flex flex-col gap-6 min-h-[320px] overflow-hidden"
+      style={{ border: "1px solid rgba(198,255,0,0.25)" }}
     >
+      {/* Fond hover inversion */}
+      <div
+        className="absolute inset-0 -z-10 transition-transform duration-500 ease-out group-hover:translate-y-0"
+        style={{
+          background: "#C6FF00",
+          transform: "translateY(101%)",
+        }}
+      />
+
       <div className="flex items-start justify-between gap-4">
-        <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-mue-lime/30 to-mue-dark-green/30 border border-mue-lime/20" />
+        <div
+          className="h-10 w-10 transition-colors duration-500"
+          style={{ border: "1px solid rgba(198,255,0,0.4)" }}
+        />
         {badge && (
-          <span className="px-3 py-1 rounded-full bg-mue-lime text-mue-black text-xs font-semibold uppercase tracking-wider">
+          <span
+            className="px-3 py-1 text-xs font-semibold uppercase tracking-wider transition-colors duration-500 group-hover:bg-exuvie-black group-hover:text-mue-lime"
+            style={{ border: "1px solid #C6FF00", color: "#C6FF00" }}
+          >
             {badge}
           </span>
         )}
       </div>
       <div className="flex-1">
-        <h3 className="font-display text-2xl md:text-3xl font-bold">{name}</h3>
-        <p className="mt-4 text-foreground/70 leading-relaxed">{description}</p>
+        <h3
+          className="font-display text-2xl md:text-3xl font-bold transition-colors duration-500 group-hover:text-exuvie-black"
+          style={{ color: "#F5F5EE" }}
+        >
+          {name}
+        </h3>
+        <p
+          className="mt-4 leading-relaxed transition-colors duration-500 group-hover:text-exuvie-black"
+          style={{ color: "rgba(245,245,238,0.55)" }}
+        >
+          {description}
+        </p>
       </div>
     </motion.article>
   );
