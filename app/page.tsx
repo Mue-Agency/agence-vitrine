@@ -12,7 +12,6 @@ export default function Home() {
     <main className="relative overflow-x-hidden">
       <Hero />
       <Marquee />
-      <TornDivider variant={1} fromBlack={false} />
       <Manifeste />
       <TornDivider variant={2} fromBlack={true} />
       <Services />
