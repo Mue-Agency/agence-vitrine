@@ -13,7 +13,6 @@ const lines = [
 export default function Manifeste() {
   return (
     <section
-      id="manifeste"
       className="py-32 px-6 md:px-20 overflow-hidden"
       style={{ backgroundColor: "#0D0D0D", color: "#F5F5EE" }}
     >
