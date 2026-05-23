@@ -3,7 +3,8 @@ import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-// Single-page layout — toutes les sections sont dans app/page.tsx
+import CustomCursor from "@/components/CustomCursor";
+import GrainOverlay from "@/components/GrainOverlay";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -26,23 +27,19 @@ export const metadata: Metadata = {
   keywords: ["agence", "digital", "mutation", "startup", "lean"],
   openGraph: {
     title: "Agence Mue — La suite vous appartient",
-    description:
-      "Agence de mutation digitale. Identifier, créer, transmettre.",
+    description: "Agence de mutation digitale. Identifier, créer, transmettre.",
     type: "website",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="fr"
-      className={`${syne.variable} ${dmSans.variable}`}
-    >
+    <html lang="fr" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="min-h-screen">
+        <CustomCursor />
+        <GrainOverlay />
         <Navbar />
         {children}
         <Footer />
