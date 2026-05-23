@@ -10,24 +10,33 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer className="relative px-6 pb-10 pt-16">
-      <div className="max-w-6xl mx-auto glass rounded-3xl p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <Image src="/logo.svg" alt="Mue" width={40} height={40} />
-          <div>
-            <div className="font-display font-bold text-lg">Agence Mue</div>
-            <div className="text-sm text-mue-lime/80 italic">La suite vous appartient.</div>
-          </div>
-        </div>
-        <nav className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-foreground/70">
-          {links.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-mue-lime transition-colors">
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <div className="text-xs text-foreground/40">© 2026 Agence Mue</div>
+    <footer
+      className="section-black px-6 md:px-20 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      style={{ borderTop: "1px solid rgba(245,245,238,0.08)" }}
+    >
+      <div className="flex items-center gap-3">
+        <Image src="/logo.svg" alt="Mue" width={28} height={28} />
+        <span
+          className="font-display font-bold text-sm"
+          style={{ color: "rgba(245,245,238,0.7)" }}
+        >
+          Agence Mue
+        </span>
       </div>
+      <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm" style={{ color: "rgba(245,245,238,0.28)" }}>
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            className="transition-colors hover:text-mue-lime"
+          >
+            {l.label}
+          </a>
+        ))}
+      </nav>
+      <p className="text-xs" style={{ color: "rgba(245,245,238,0.18)" }}>
+        © 2026 Agence Mue
+      </p>
     </footer>
   );
 }
