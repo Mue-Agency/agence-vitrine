@@ -15,24 +15,34 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  // isTop = true → on est sur le hero blanc → text sombre
+  // isTop = false → on a scrollé → navbar frosted dark → text clair
+  const [isTop, setIsTop] = useState(true);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setIsTop(window.scrollY < 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const textColor = isTop ? "rgba(13,13,13,0.7)" : "rgba(245,245,238,0.6)";
+  const textHover = isTop ? "#0D0D0D" : "#F5F5EE";
+  const ctaBorder = isTop ? "#0D0D0D" : "#C6FF00";
+  const ctaColor = isTop ? "#0D0D0D" : "#C6FF00";
+  const ctaBgHover = isTop ? "#0D0D0D" : "#C6FF00";
+  const ctaColorHover = isTop ? "#F5F5EE" : "#0D0D0D";
+  const logoColor = isTop ? "#0D0D0D" : "#F5F5EE";
 
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-20 py-5 flex items-center justify-between transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 px-6 md:px-20 py-5 flex items-center justify-between transition-all duration-500"
       style={{
-        background: scrolled ? "rgba(13,13,13,0.92)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(245,245,238,0.07)" : "none",
+        background: isTop ? "transparent" : "rgba(13,13,13,0.92)",
+        backdropFilter: isTop ? "none" : "blur(16px)",
+        borderBottom: isTop ? "none" : "1px solid rgba(245,245,238,0.06)",
       }}
     >
       <a href="#accueil" className="flex items-center gap-2.5 group" data-cursor>
@@ -42,8 +52,12 @@ export default function Navbar() {
           width={32}
           height={32}
           className="transition-transform group-hover:rotate-12"
+          style={{ filter: isTop ? "invert(1)" : "none" }}
         />
-        <span className="font-display font-bold text-base tracking-tight" style={{ color: "#F5F5EE" }}>
+        <span
+          className="font-display font-bold text-base tracking-tight transition-colors duration-500"
+          style={{ color: logoColor }}
+        >
           Mue
         </span>
       </a>
@@ -53,10 +67,10 @@ export default function Navbar() {
           <a
             key={l.href}
             href={l.href}
-            className="px-4 py-2 text-sm transition-colors"
-            style={{ color: "rgba(245,245,238,0.55)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#F5F5EE")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,245,238,0.55)")}
+            className="px-4 py-2 text-sm transition-colors duration-300"
+            style={{ color: textColor }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = textHover)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
             data-cursor
           >
             {l.label}
@@ -66,18 +80,17 @@ export default function Navbar() {
 
       <a
         href="#contact"
-        className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold transition-colors"
-        style={{
-          border: "1px solid #C6FF00",
-          color: "#C6FF00",
-        }}
+        className="hidden md:inline-flex items-center px-5 py-2 text-sm font-semibold transition-all duration-300"
+        style={{ border: `1px solid ${ctaBorder}`, color: ctaColor }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "#C6FF00";
-          (e.currentTarget as HTMLElement).style.color = "#0D0D0D";
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = ctaBgHover;
+          el.style.color = ctaColorHover;
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.background = "transparent";
-          (e.currentTarget as HTMLElement).style.color = "#C6FF00";
+          const el = e.currentTarget as HTMLElement;
+          el.style.background = "transparent";
+          el.style.color = ctaColor;
         }}
         data-cursor
       >
@@ -86,8 +99,8 @@ export default function Navbar() {
 
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden p-2"
-        style={{ color: "#F5F5EE" }}
+        className="md:hidden p-2 transition-colors duration-300"
+        style={{ color: isTop ? "#0D0D0D" : "#F5F5EE" }}
         aria-label="Menu"
         data-cursor
       >
@@ -113,8 +126,6 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="px-4 py-3 transition-colors"
                 style={{ color: "rgba(245,245,238,0.75)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#C6FF00")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,245,238,0.75)")}
               >
                 {l.label}
               </a>

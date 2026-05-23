@@ -7,42 +7,40 @@ const lines = [
   "pas des outils.",
   "Nous aidons vos organisations",
   "à muer.",
+  "Cinq temps. Une boucle.",
 ];
 
 export default function Manifeste() {
   return (
-    <section className="section-black py-40 px-6 md:px-20 overflow-hidden">
+    <section
+      id="manifeste"
+      className="py-32 px-6 md:px-20 overflow-hidden"
+      style={{ backgroundColor: "#0D0D0D", color: "#F5F5EE" }}
+    >
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
           {lines.map((line, i) => (
             <div key={i} className="overflow-hidden">
               <motion.p
                 initial={{ y: "110%" }}
                 whileInView={{ y: "0%" }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "-60px" }}
                 transition={{
-                  delay: i * 0.12,
-                  duration: 0.9,
+                  delay: i * 0.1,
+                  duration: 0.85,
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 className="font-display font-bold leading-[1.05]"
-                style={{ fontSize: "clamp(2.5rem,7vw,7rem)" }}
+                style={{
+                  fontSize: i >= 4 ? "clamp(1.6rem,3.5vw,3.5rem)" : "clamp(2.5rem,7vw,7rem)",
+                  color: i >= 4 ? "rgba(245,245,238,0.35)" : "#F5F5EE",
+                }}
               >
                 {line}
               </motion.p>
             </div>
           ))}
         </div>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="mt-16 text-lg max-w-md"
-          style={{ color: "rgba(245,245,238,0.4)" }}
-        >
-          Cinq temps. Une boucle. Le reste vous appartient.
-        </motion.p>
       </div>
     </section>
   );
