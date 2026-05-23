@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Mail } from "lucide-react";
 
 function Field({
@@ -40,8 +41,12 @@ function Field({
 }
 
 export default function Contact() {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
+
   return (
     <section
+      ref={ref}
       id="contact"
       className="section-black relative py-32 px-6 md:px-20 overflow-hidden"
     >
@@ -50,8 +55,7 @@ export default function Contact() {
         <div className="overflow-hidden mb-24">
           <motion.h2
             initial={{ y: "110%" }}
-            whileInView={{ y: "0%" }}
-            viewport={{ once: true }}
+            animate={isInView ? { y: "0%" } : { y: "110%" }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="font-display font-bold leading-[0.85]"
             style={{ fontSize: "clamp(5rem,15vw,15rem)", color: "#F5F5EE" }}
