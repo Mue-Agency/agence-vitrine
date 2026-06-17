@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 const links = [
-  { href: "#projets", label: "nos entreprises" },
-  { href: "#fonctionnement", label: "méthode" },
-  { href: "#equipe", label: "équipe" },
+  { href: "#projets", label: "NOS ENTREPRISES" },
+  { href: "#fonctionnement", label: "MÉTHODE" },
+  { href: "#equipe", label: "ÉQUIPE" },
 ];
 
 export default function Navbar() {

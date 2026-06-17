@@ -39,8 +39,8 @@ export default function Marquee() {
         {repeated.map((item, i) => (
           <span key={i} className="inline-flex items-center">
             <span
-              className="font-display font-bold uppercase tracking-[0.15em]"
-              style={{ fontSize: "clamp(0.9rem,1.5vw,1.2rem)", color: "#F5F5EE" }}
+              className="font-bold uppercase tracking-[0.15em]"
+              style={{ fontFamily: "'Aukera', sans-serif", fontSize: "clamp(0.9rem,1.5vw,1.2rem)", color: "#F5F5EE" }}
             >
               {item}
             </span>
