@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "NOS ENTREPRISES", href: "#projets" },
@@ -88,6 +89,17 @@ export default function Footer() {
             </a>
           ))}
         </div>
+      </div>
+
+      {/* Mentions légales */}
+      <div className="flex items-end md:self-end">
+        <Link
+          href="/mentions"
+          style={{ ...linkStyle, fontSize: "12px", opacity: 0.6 }}
+          className="hover:opacity-100 transition-opacity"
+        >
+          Mentions légales
+        </Link>
       </div>
     </footer>
   );
