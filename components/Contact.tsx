@@ -1,150 +1,149 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Mail } from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
+
+const fieldStyle = {
+  background: "transparent",
+  border: "none",
+  borderBottom: "1px solid rgba(255,255,255,0.35)",
+  outline: "none",
+  color: "white",
+  fontFamily: "'Satoshi', sans-serif",
+  fontSize: 18,
+  fontWeight: 400,
+  width: "100%",
+  paddingBottom: 8,
+};
 
 function Field({
   label,
-  id,
-  type,
+  type = "text",
   placeholder,
+  value,
+  onChange,
 }: {
   label: string;
-  id: string;
-  type: string;
+  type?: string;
   placeholder: string;
+  value: string;
+  onChange: (v: string) => void;
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2 w-full">
       <label
-        htmlFor={id}
-        className="text-xs uppercase tracking-widest"
-        style={{ color: "rgba(245,245,238,0.35)" }}
+        style={{
+          fontFamily: "'Satoshi', sans-serif",
+          fontSize: "clamp(18px, 2vw, 24px)",
+          fontWeight: 500,
+          color: "white",
+        }}
       >
         {label}
       </label>
       <input
-        id={id}
         type={type}
         placeholder={placeholder}
-        className="bg-transparent pb-3 outline-none transition-colors"
-        style={{
-          borderBottom: "1px solid rgba(245,245,238,0.18)",
-          color: "#F5F5EE",
-        }}
-        onFocus={(e) => (e.currentTarget.style.borderBottomColor = "#C6FF00")}
-        onBlur={(e) => (e.currentTarget.style.borderBottomColor = "rgba(245,245,238,0.18)")}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={{ ...fieldStyle, fontSize: "clamp(14px, 1.5vw, 18px)", caretColor: "#b7f700" }}
+        onFocus={(e) => (e.currentTarget.style.borderBottomColor = "rgba(255,255,255,0.8)")}
+        onBlur={(e) => (e.currentTarget.style.borderBottomColor = "rgba(255,255,255,0.35)")}
       />
     </div>
   );
 }
 
 export default function Contact() {
-  const ref = useRef<HTMLElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px 0px" });
+  const [form, setForm] = useState({ nom: "", email: "", message: "" });
 
   return (
     <section
-      ref={ref}
       id="contact"
-      className="section-black relative py-32 px-6 md:px-20 overflow-hidden"
+      className="relative overflow-hidden"
+      style={{ background: "#044105" }}
     >
-      <div className="max-w-6xl mx-auto">
-        {/* "Parlons." géant */}
-        <div className="overflow-hidden mb-24">
-          <motion.h2
-            initial={{ y: "110%" }}
-            animate={isInView ? { y: "0%" } : { y: "110%" }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display font-bold leading-[0.85]"
-            style={{ fontSize: "clamp(5rem,15vw,15rem)", color: "#F5F5EE" }}
-          >
-            Parlons.
-          </motion.h2>
-        </div>
+      {/* Decorative shape — desktop only */}
+      <div
+        className="hidden xl:block absolute pointer-events-none"
+        style={{
+          top: -164,
+          left: -382,
+          width: 924,
+          height: 886,
+          transform: "rotate(66.16deg) scaleY(-1)",
+          opacity: 0.15,
+        }}
+      >
+        <Image
+          src="/Subtract.svg"
+          alt=""
+          fill
+          style={{ objectFit: "contain", filter: "brightness(0) invert(1)" }}
+        />
+      </div>
 
-        <div className="grid lg:grid-cols-[1.5fr_1fr] gap-16 items-start">
-          {/* Formulaire */}
-          <motion.form
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+      <div className="relative px-6 md:px-[64px] py-[80px] xl:py-[160px]">
+        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-end gap-12 xl:gap-[74px] xl:pr-[75px]">
+          {/* Title */}
+          <div className="xl:flex-1">
+            <h2
+              style={{
+                fontFamily: "'Satoshi', sans-serif",
+                fontSize: "clamp(1.75rem, 4vw, 52px)",
+                fontWeight: 500,
+                color: "white",
+                letterSpacing: "-1.28px",
+                lineHeight: "normal",
+              }}
+            >
+              Contactez-nous
+            </h2>
+          </div>
+
+          {/* Form */}
+          <form
             onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col gap-10"
+            className="flex flex-col gap-8 items-end w-full xl:w-[523px] xl:flex-none"
           >
-            <div className="grid md:grid-cols-2 gap-10">
-              <Field label="Nom" id="name" type="text" placeholder="Votre nom" />
-              <Field label="Email" id="email" type="email" placeholder="vous@exemple.com" />
-            </div>
-            <div className="flex flex-col gap-3">
-              <label
-                htmlFor="message"
-                className="text-xs uppercase tracking-widest"
-                style={{ color: "rgba(245,245,238,0.35)" }}
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={5}
-                placeholder="Parlez-nous de votre projet…"
-                className="bg-transparent pb-3 outline-none resize-none transition-colors"
-                style={{
-                  borderBottom: "1px solid rgba(245,245,238,0.18)",
-                  color: "#F5F5EE",
-                }}
-                onFocus={(e) =>
-                  (e.currentTarget.style.borderBottomColor = "#C6FF00")
-                }
-                onBlur={(e) =>
-                  (e.currentTarget.style.borderBottomColor =
-                    "rgba(245,245,238,0.18)")
-                }
-              />
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="px-8 py-4 font-semibold uppercase tracking-widest text-sm transition-all hover:glow-lime"
-                style={{ background: "#C6FF00", color: "#0D0D0D" }}
-                data-cursor
-              >
-                Envoyer
-              </button>
-            </div>
-          </motion.form>
-
-          {/* Infos */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-col gap-8 pt-2"
-          >
-            <div>
-              <span
-                className="text-xs uppercase tracking-widest"
-                style={{ color: "rgba(245,245,238,0.28)" }}
-              >
-                Email direct
-              </span>
-              <a
-                href="mailto:hello@agencemue.fr"
-                className="mt-3 flex items-center gap-3 transition-colors hover:text-mue-lime"
-                style={{ color: "#F5F5EE" }}
-                data-cursor
-              >
-                <Mail size={16} /> hello@agencemue.fr
-              </a>
-            </div>
-            <div style={{ height: 1, background: "rgba(245,245,238,0.08)" }} />
-            <p className="text-sm" style={{ color: "rgba(245,245,238,0.28)" }}>
-              On vous répond en moins de 48h. Toujours.
-            </p>
-          </motion.div>
+            <Field
+              label="Nom"
+              placeholder="Entrez votre nom"
+              value={form.nom}
+              onChange={(v) => setForm({ ...form, nom: v })}
+            />
+            <Field
+              label="Email"
+              type="email"
+              placeholder="Entrez votre adresse mail"
+              value={form.email}
+              onChange={(v) => setForm({ ...form, email: v })}
+            />
+            <Field
+              label="Message"
+              placeholder="Entrez votre message"
+              value={form.message}
+              onChange={(v) => setForm({ ...form, message: v })}
+            />
+            <button
+              type="submit"
+              style={{
+                background: "#b7f700",
+                color: "#131313",
+                fontFamily: "'Satoshi', sans-serif",
+                fontSize: "clamp(14px, 1.5vw, 18px)",
+                fontWeight: 500,
+                letterSpacing: "1.2px",
+                textTransform: "uppercase",
+                padding: "12px 16px",
+                height: 48,
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              envoyer
+            </button>
+          </form>
         </div>
       </div>
     </section>
