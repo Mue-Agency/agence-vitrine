@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agence Mue — Site vitrine
 
-## Getting Started
+Site vitrine de l'Agence Mue, agence de design et développement digital basée à Paris.
 
-First, run the development server:
+## Stack technique
+
+- **Framework** : Next.js 16 (App Router)
+- **UI** : React 19, Tailwind CSS 4
+- **Animations** : Framer Motion
+- **Icônes** : Lucide React
+- **Langage** : TypeScript
+- **Déploiement** : Vercel
+
+## Structure du projet
+
+```
+app/
+├── layout.tsx          # Layout global (fonts, metadata, Navbar, Footer)
+├── page.tsx            # Page d'accueil
+└── mentions/
+    └── page.tsx        # Page mentions légales
+
+components/
+├── Navbar.tsx          # Navigation fixe (desktop + mobile hamburger)
+├── Hero.tsx            # Section héro principale
+├── Marquee.tsx         # Bandeau défilant (Identifier, Créer, Tester, Itérer, Transmettre)
+├── Manifeste.tsx       # Section manifeste de l'agence
+├── Services.tsx        # Grille des services
+├── ServiceCard.tsx     # Carte individuelle de service
+├── Products.tsx        # Section produits / projets
+├── ProductCard.tsx     # Carte individuelle de produit
+├── Team.tsx            # Section équipe
+├── TeamCard.tsx        # Carte individuelle membre
+├── Contact.tsx         # Section formulaire de contact
+├── Footer.tsx          # Pied de page avec navigation et mentions légales
+├── TornDivider.tsx     # Séparateur visuel entre sections
+├── AlouetteOverlay.tsx # Overlay décoratif
+├── CustomCursor.tsx    # Curseur personnalisé
+├── GrainOverlay.tsx    # Effet de grain visuel
+└── Marquee.tsx         # Bandeau texte défilant
+
+public/
+├── Subtract.svg        # Logo Mue (forme)
+├── Vector 65.svg       # Élément décoratif
+├── logo.svg            # Logo
+├── image/              # Photos de l'équipe (à ajouter)
+└── *.jpg               # Images projets
+```
+
+## Installation
+
+```bash
+npm install
+```
+
+## Développement
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Images manquantes
 
-To learn more about Next.js, take a look at the following resources:
+Les photos de l'équipe sont placées dans `public/image/` :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`mamou.jpg`, `pierre.jpg`, `chainz.jpg`, `giovanni.jpg`, `elea.jpg`, `hugo.jpg`, `gabin.jpg`, `walid.jpg`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Équipe
 
-## Deploy on Vercel
+| Nom | Rôle |
+|-----|------|
+| Mamou Traoré | UX / Product Designer |
+| Pierre Collay | DA / UI Designer |
+| Chaïnez Hajjaoui | DA / UI Designer |
+| Giovanni Kloussey | Développeur |
+| Eléa Ya | Développeuse |
+| Hugo Borges | MKTI |
+| Gabin Rouquet | MKTI |
+| Walid Traoré | Motion Designer |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Architecture technique
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+----------------------------------------------------------------------------
+
+### Rendu & SEO
+
+- SSR par défaut (Server Components)
+- Metadata définie dans `layout.tsx` et par page (`mentions/page.tsx`)
+- `lang="fr"` sur le `<html>`
+
+### Styling
+
+- **Tailwind CSS 4** avec `@import "tailwindcss"`
+
+- Thème custom via `@theme inline` dans `globals.css` :
+  - `--color-mue-green: #044105` (vert foncé principal)
+  - `--color-mue-lime: #b7f700` (vert lime accent)
+  - `--color-mue-mint: #edf4ed` (vert clair fond)
+- Styles inline (`style={{}}`) pour les valeurs spécifiques au design (tailles, espacements Figma)
+- Scroll smooth activé globalement
+
+### Fonts
+
+- **Satoshi** (Fontshare) : chargée via CDN dans `<head>`, utilisée comme police par défaut du `body`
+- **Aukera** : police display pour titres, logo et marquee — 
+(fichier `.woff2`/`.ttf` à ajouter et déclarer via `@font-face` dans `globals.css`)
+
+### Animations
+
+- **Framer Motion** : animations d'entrée au scroll 
+    (`useInView`, `motion.div`)
+- **CSS keyframes** : marquee défilant infini 
+    (`marquee-scroll`)
+- Transitions CSS via Tailwind 
+    (`transition-colors`, `transition-opacity`)
+
+### Images
+
+- Assets statiques dans `public/`
+- Photos équipe attendues dans `public/image/` (non présentes)
+
+### Alias d'import
+
+`@/*` pointe vers la racine du projet (configuré dans `tsconfig.json`), ce qui permet d'écrire `import X from "@/components/X"`.
+
+### TypeScript
+
+- Mode strict activé
+- Target ES2017, module ESNext avec résolution `bundler`
+
+## Contact
+
+hello@agencemue.fr
