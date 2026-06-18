@@ -6,7 +6,7 @@ const team = [
   { name: "Chaïnez HAJJAOUI", role: "DA / UI Designer", photo: "/image/chainz.jpg" },
   { name: "Giovanni KLOUSSEY", role: "Développeur", photo: "/image/giovanni.jpg" },
   { name: "Eléa YA", role: "Développeuse", photo: "/image/elea.jpg" },
-  { name: "Hugo BORGES", role: "MKTI ", photo: "/image/hugo.jpg" },
+  { name: "Hugo BORGES", role: "MKTI", photo: "/image/hugo.jpg" },
   { name: "Gabin Rouquet", role: "MKTI", photo: "/image/gabin.jpg" },
   { name: "Walid TRAORÉ", role: "Motion Designer", photo: "/image/walid.jpg" },
 ];

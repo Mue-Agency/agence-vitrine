@@ -25,6 +25,7 @@ export default function AlouetteOverlay({ onClose }: AlouetteOverlayProps) {
         {/* Close button */}
         <button
           onClick={onClose}
+          aria-label="Fermer"
           className="absolute flex items-center justify-center text-white z-10"
           style={{
             top: 35,
@@ -37,17 +38,6 @@ export default function AlouetteOverlay({ onClose }: AlouetteOverlayProps) {
             cursor: "pointer",
           }}
         >
-          <Image
-            src="/Subtract.svg"
-            alt="close"
-            width={22}
-            height={22}
-            style={{
-              filter: "brightness(0) invert(1)",
-              transform: "rotate(45deg)",
-              display: "none",
-            }}
-          />
           ✕
         </button>
 
@@ -142,7 +132,7 @@ export default function AlouetteOverlay({ onClose }: AlouetteOverlayProps) {
               {/* Site web */}
               <div className="flex items-start justify-between text-white" style={{ fontSize: 16 }}>
                 <span style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 700 }}>Site web</span>
-                <span style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500 }}>Alouette.com</span>
+                <a href="https://alouette.mue.agency" target="_blank" rel="noopener noreferrer" style={{ fontFamily: "'Satoshi', sans-serif", fontWeight: 500, color: "white", textDecoration: "underline" }}>Alouette.com</a>
               </div>
               <div style={{ height: 1, background: "rgba(255,255,255,0.3)" }} />
 

@@ -14,8 +14,8 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
-      style={{ height: 98, paddingLeft: 54, paddingRight: 32 }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between backdrop-blur-md"
+      style={{ height: 98, paddingLeft: 54, paddingRight: 32, background: "rgba(4,65,5,0.85)" }}
     >
       {/* Logo */}
       <a href="/" className="flex items-center gap-[10px]">

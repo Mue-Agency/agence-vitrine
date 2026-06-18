@@ -25,25 +25,20 @@ components/
 ├── Hero.tsx            # Section héro principale
 ├── Marquee.tsx         # Bandeau défilant (Identifier, Créer, Tester, Itérer, Transmettre)
 ├── Manifeste.tsx       # Section manifeste de l'agence
-├── Services.tsx        # Grille des services
-├── ServiceCard.tsx     # Carte individuelle de service
+├── Services.tsx        # Section méthode (5 étapes)
 ├── Products.tsx        # Section produits / projets
 ├── ProductCard.tsx     # Carte individuelle de produit
 ├── Team.tsx            # Section équipe
-├── TeamCard.tsx        # Carte individuelle membre
-├── Contact.tsx         # Section formulaire de contact
+├── Contact.tsx         # Section formulaire de contact (mailto)
 ├── Footer.tsx          # Pied de page avec navigation et mentions légales
 ├── TornDivider.tsx     # Séparateur visuel entre sections
-├── AlouetteOverlay.tsx # Overlay décoratif
-├── CustomCursor.tsx    # Curseur personnalisé
-├── GrainOverlay.tsx    # Effet de grain visuel
-└── Marquee.tsx         # Bandeau texte défilant
+└── AlouetteOverlay.tsx # Overlay projet Alouette
 
 public/
 ├── Subtract.svg        # Logo Mue (forme)
 ├── Vector 65.svg       # Élément décoratif
 ├── logo.svg            # Logo
-├── image/              # Photos de l'équipe (à ajouter)
+├── image/              # Photos de l'équipe
 └── *.jpg               # Images projets
 ```
 
@@ -68,12 +63,6 @@ npm run build
 npm start
 ```
 
-## Images manquantes
-
-Les photos de l'équipe sont placées dans `public/image/` :
-
-`mamou.jpg`, `pierre.jpg`, `chainz.jpg`, `giovanni.jpg`, `elea.jpg`, `hugo.jpg`, `gabin.jpg`, `walid.jpg`
-
 ## Équipe
 
 | Nom | Rôle |
@@ -88,8 +77,6 @@ Les photos de l'équipe sont placées dans `public/image/` :
 | Walid Traoré | Motion Designer |
 
 ## Architecture technique
-
-----------------------------------------------------------------------------
 
 ### Rendu & SEO
 
@@ -126,7 +113,7 @@ Les photos de l'équipe sont placées dans `public/image/` :
 ### Images
 
 - Assets statiques dans `public/`
-- Photos équipe attendues dans `public/image/` (non présentes)
+- Photos équipe dans `public/image/`
 
 ### Alias d'import
 
@@ -139,4 +126,4 @@ Les photos de l'équipe sont placées dans `public/image/` :
 
 ## Contact
 
-hello@agencemue.fr
+contact@mue.agency.fr

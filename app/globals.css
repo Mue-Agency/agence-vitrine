@@ -4,6 +4,7 @@
   --color-mue-green: #044105;
   --color-mue-lime: #b7f700;
   --color-mue-mint: #edf4ed;
+  --font-display: 'Aukera', 'Satoshi', sans-serif;
 }
 
 @layer base {
@@ -24,5 +25,12 @@
   input::placeholder,
   textarea::placeholder {
     color: rgba(255, 255, 255, 0.4);
+  }
+  .contact-field {
+    border-bottom-color: rgba(255, 255, 255, 0.35);
+    transition: border-bottom-color 0.2s ease;
+  }
+  .contact-field:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
   }
 }

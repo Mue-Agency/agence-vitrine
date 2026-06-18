@@ -56,7 +56,7 @@ export default function MentionsPage() {
               Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique
               et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition
               concernant vos données personnelles. Pour exercer ces droits, contactez-nous à l'adresse :
-              hello@agencemue.fr
+              contact@mue.agency.fr
             </p>
             <p className="mt-2">
               Les données collectées via le formulaire de contact sont uniquement destinées au traitement de

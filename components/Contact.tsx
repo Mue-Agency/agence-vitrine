@@ -46,9 +46,8 @@ function Field({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        className="contact-field"
         style={{ ...fieldStyle, fontSize: "clamp(14px, 1.5vw, 18px)", caretColor: "#b7f700" }}
-        onFocus={(e) => (e.currentTarget.style.borderBottomColor = "rgba(255,255,255,0.8)")}
-        onBlur={(e) => (e.currentTarget.style.borderBottomColor = "rgba(255,255,255,0.35)")}
       />
     </div>
   );
@@ -56,6 +55,15 @@ function Field({
 
 export default function Contact() {
   const [form, setForm] = useState({ nom: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Contact de ${form.nom}`);
+    const body = encodeURIComponent(`Nom: ${form.nom}\nEmail: ${form.email}\n\n${form.message}`);
+    window.open(`mailto:hello@agencemue.fr?subject=${subject}&body=${body}`, "_self");
+    setSent(true);
+  };
 
   return (
     <section
@@ -103,7 +111,7 @@ export default function Contact() {
 
           {/* Form */}
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             className="flex flex-col gap-8 items-end w-full xl:w-[523px] xl:flex-none"
           >
             <Field
@@ -128,8 +136,8 @@ export default function Contact() {
             <button
               type="submit"
               style={{
-                background: "#b7f700",
-                color: "#131313",
+                background: sent ? "#044105" : "#b7f700",
+                color: sent ? "#b7f700" : "#131313",
                 fontFamily: "'Satoshi', sans-serif",
                 fontSize: "clamp(14px, 1.5vw, 18px)",
                 fontWeight: 500,
@@ -137,11 +145,12 @@ export default function Contact() {
                 textTransform: "uppercase",
                 padding: "12px 16px",
                 height: 48,
-                border: "none",
+                border: sent ? "1px solid #b7f700" : "none",
                 cursor: "pointer",
+                transition: "all 0.3s ease",
               }}
             >
-              envoyer
+              {sent ? "Message préparé ✓" : "envoyer"}
             </button>
           </form>
         </div>
