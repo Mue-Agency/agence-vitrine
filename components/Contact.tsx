@@ -71,16 +71,16 @@ export default function Contact() {
       className="relative overflow-hidden"
       style={{ background: "#044105" }}
     >
-      {/* Decorative shape — desktop only */}
+      {/* Decorative shape top-left — continuation of Team bottom-left */}
       <div
         className="hidden xl:block absolute pointer-events-none"
         style={{
-          top: -164,
-          left: -382,
-          width: 924,
-          height: 886,
+          top: -600,
+          left: -381,
+          width: 923,
+          height: 874,
           transform: "rotate(66.16deg) scaleY(-1)",
-          opacity: 0.15,
+          opacity: 0.12,
         }}
       >
         <Image

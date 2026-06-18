@@ -33,7 +33,7 @@ export default function Hero() {
         {/* Decorative S-shape — desktop only */}
         <div
           className="hidden xl:block absolute pointer-events-none"
-          style={{ top: 154, left: 1023, width: 340, height: 398 }}
+          style={{ top: 154, right: 400, width: 340, height: 398 }}
         >
           <Image
             src="/Subtract.svg"

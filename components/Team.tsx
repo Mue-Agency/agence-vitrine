@@ -77,8 +77,8 @@ export default function Team() {
         className="hidden xl:block absolute pointer-events-none"
         style={{
           top: -527,
-          left: 967,
-          width: 937,
+          right: 0,
+          width: 900,
           height: 903,
           transform: "rotate(-116.48deg) scaleY(-1)",
           opacity: 0.12,
